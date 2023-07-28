@@ -1,65 +1,73 @@
-const data = {
-    flights: [
-        {
-            id: 1,
-            name: 'VQ-903',
-            plane: 'ATR725',
-            departureDate: '2023-08-05 13:45:00',
-            origin: 'DAC',
-            arrivalDate: '2023-08-05 14:40:00',
-            destination: 'CGP',
-            stops: 0,
-        },
-        {
-            id: 2,
-            name: 'VQ-906',
-            plane: 'A320',
-            departureDate: '2023-08-20 09:00:00',
-            origin: 'SFO',
-            arrivalDate: '2023-08-20 12:15:00',
-            destination: 'JFK',
-            stops: 0,
-        },
-        {
-            id: 3,
-            name: 'VQ-907',
-            plane: 'BOEING737',
-            departureDate: '2023-08-25 14:20:00',
-            origin: 'LAX',
-            arrivalDate: '2023-08-25 18:40:00',
-            destination: 'ORD',
-            stops: 1,
-        },
-        {
-            id: 4,
-            name: 'VQ-904',
-            plane: 'ATR725',
-            departureDate: '2023-08-10 09:10:00',
-            origin: 'CGP',
-            arrivalDate: '2023-08-10 10:05:00',
-            destination: 'DAC',
-            stops: 0,
-        },
-        {
-            id: 5,
-            name: 'VQ-905',
-            plane: 'BOEING747',
-            departureDate: '2023-08-15 16:30:00',
-            origin: 'LHR',
-            arrivalDate: '2023-08-16 02:45:00',
-            destination: 'JFK',
-            stops: 1,
-        },
-        {
-            id: 6,
-            name: 'VQ-903',
-            plane: 'ATR725',
-            departureDate: '2023-08-05 13:45:00',
-            origin: 'DAC',
-            arrivalDate: '2023-08-05 14:40:00',
-            destination: 'CGP',
-            stops: 0,
-        },
-    ],
-};
-console.log('Let us build a tod list');
+window.addEventListener('load', () => {
+	const form = document.querySelector("#new-task-form");
+	const input = document.querySelector("#new-task-input");
+	const listElement = document.querySelector("#challenges");
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+		const task = input.value;
+
+		const taskElement = document.createElement('div');
+		taskElement.classList.add('task');
+
+		const taskContentElement = document.createElement('div');
+		taskContentElement.classList.add('content');
+
+		taskElement.appendChild(taskContentElement);
+
+		const taskInputElement = document.createElement('input');
+		taskInputElement.classList.add('text');
+		taskInputElement.type = 'text';
+		taskInputElement.value = task;
+		taskInputElement.setAttribute('readonly', 'readonly');
+
+		taskContentElement.appendChild(taskInputElement);
+
+		const task_actions_el = document.createElement('div');
+		task_actions_el.classList.add('actions');
+
+		const task_edit_el = document.createElement('button');
+		task_edit_el.classList.add('edit');
+		const editImage = document.createElement('img');
+		editImage.src = './assets/pencil.png';
+		editImage.alt = 'trash';
+		editImage.classList.add('edit-image');
+
+
+		const task_delete_el = document.createElement('button');
+		task_delete_el.classList.add('delete');
+
+
+		const trashImage = document.createElement('img');
+		trashImage.src = './assets/trash.png';
+		trashImage.alt = 'trash';
+		trashImage.classList.add('trash-image');
+
+		task_edit_el.appendChild(editImage);
+		task_delete_el.appendChild(trashImage);
+		task_actions_el.appendChild(task_edit_el);
+		task_actions_el.appendChild(task_delete_el);
+
+		taskElement.appendChild(task_actions_el);
+
+		listElement.appendChild(taskElement);
+
+		input.value = '';
+
+		task_edit_el.addEventListener('click', (e) => {
+			if (task_edit_el.innerText.toLowerCase() == "edit") {
+				task_edit_el.innerText = "Save";
+				taskInputElement.removeAttribute("readonly");
+				taskInputElement.focus();
+			} else {
+				task_edit_el.innerText = "Edit";
+				taskInputElement.setAttribute("readonly", "readonly");
+			}
+		});
+
+		task_delete_el.addEventListener('click', (e) => {
+			listElement.removeChild(taskElement);
+		});
+	});
+});
