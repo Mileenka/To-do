@@ -35,7 +35,7 @@ const newChallengeComponent = (taskData) => {
    const taskSaveElement = document.createElement("button");
    taskSaveElement.classList.add("save");
    let saveImage = document.createElement("img");
-   saveImage.src = "../assets/save-file.png";
+   saveImage.src = "./assets/save-file.png";
    saveImage.alt = "Save button";
    saveImage.classList.add("save-image");
 
