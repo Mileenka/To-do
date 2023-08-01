@@ -1,5 +1,5 @@
-import editChallengeHandler from "../handlers/editChallengeHandler.js";
+import editChallengeHandler from '../handlers/editChallengeHandler.js';
 
-document.querySelector("#challenges").addEventListener("click", (e) => {
-   editChallengeHandler(e);
+document.querySelector('#challenges').addEventListener('click', (e) => {
+    editChallengeHandler(e);
 });
