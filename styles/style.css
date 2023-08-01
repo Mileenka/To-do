@@ -28,6 +28,14 @@ body {
     background-color: var(--dark);
 }
 
+.puzzles {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20rem;
+    height: 20rem;
+}
+
 .puzzle {
     position: absolute;
     right: 2rem;
@@ -228,25 +236,6 @@ main {
 /* Desktop */
 
 @media screen and (min-width: 700px) {
-    .puzzle {
-        right: 7rem;
-        width: 10rem;
-        height: 10rem;
-    }
-
-    .puzzle2 {
-        top: 28rem;
-        right: 13rem;
-        width: 10rem;
-        height: 10rem;
-    }
-
-    .puzzle3 {
-        right: 18rem;
-        width: 10rem;
-        height: 10rem;
-    }
-
     header .h1-list {
         font-size: 2.8rem;
     }
